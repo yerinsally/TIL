@@ -1,12 +1,6 @@
 def solution(num_list):
-    answer = []
-    a = len(num_list)-1
-    b = len(num_list)-2
-    for num in num_list:
-        answer.append(num)
-        if num_list[a] > num_list[b]:
-            c = num_list[a]-num_list[b]
-        else:
-            c = num_list[a]*2
-    answer.append(c)
-    return answer
+    if num_list[-1] > num_list[-2]:
+        num_list.append(num_list[-1]-num_list[-2])
+    else:
+        num_list.append(num_list[-1]*2)
+    return num_list
