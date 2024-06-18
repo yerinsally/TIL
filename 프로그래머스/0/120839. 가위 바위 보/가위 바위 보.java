@@ -1,0 +1,18 @@
+class Solution {
+    public String solution(String rsp) {
+        StringBuilder answer = new StringBuilder();
+
+        //String answer = "";
+        char[] charArray = rsp.toCharArray();   //문자열을 문자배열로 변환
+        for (char c : charArray) {
+            if (c=='2') {
+                answer.append("0");
+            }else if(c=='0') {
+                answer.append("5");
+            }else if(c=='5') {
+                answer.append("2");
+            }
+        }
+        return answer.toString();
+    }
+}
