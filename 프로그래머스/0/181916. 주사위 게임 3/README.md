@@ -1,6 +1,6 @@
 # [level 0] 주사위 게임 3 - 181916 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181916?language=java) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181916) 
 
 ### 성능 요약
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2024년 06월 29일 20:48:45
+2024년 07월 01일 10:52:55
 
 ### 문제 설명
 
