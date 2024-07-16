@@ -17,13 +17,9 @@ class Solution {
                 }
                 //arr[i]=65~90이면 arr[i]+n / arr[i]+n>90이면 arr[i]+n-26
                 //arr[i]=97~122이면 arr[i]+n / arr[i]+n>122이면 arr[i]+n-26
-                if(arr[i]>=65 && arr[i]<=90 && arr[i]+n<=90){
+                if(arr[i]>=65 && arr[i]<=90 && arr[i]+n<=90 || arr[i]>=97 && arr[i]<=122 && arr[i]+n<=122){
                     new_s = (int)(arr[i]+n);
-                }else if(arr[i]>=65 && arr[i]<=90 && arr[i]+n>90){
-                    new_s = (int)(arr[i]+n-26);
-                }else if(arr[i]>=97 && arr[i]<=122 && arr[i]+n<=122){
-                    new_s = (int)(arr[i]+n);
-                }else if(arr[i]>=97 && arr[i]<=122 && arr[i]+n>122){
+                }else if(arr[i]>=65 && arr[i]<=90 && arr[i]+n>90 || arr[i]>=97 && arr[i]<=122 && arr[i]+n>122){
                     new_s = (int)(arr[i]+n-26);
                 }
                 answer += (char)new_s;
