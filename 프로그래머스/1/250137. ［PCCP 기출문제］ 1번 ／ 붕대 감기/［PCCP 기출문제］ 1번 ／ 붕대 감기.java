@@ -1,45 +1,34 @@
 class Solution {
     public int solution(int[] bandage, int health, int[][] attacks) {
-        int t = bandage[0]; // 연속 성공 시간
-        int x = bandage[1]; // 1초당 회복량
-        int y = bandage[2]; // 연속 성공 시 추가 회복량
-
-        int now = health; // 현재 체력
-        int con = 0; // 연속 성공 여부
-        int attackIndex = 0; // 현재 공격을 추적하는 인덱스
-
-        // 최대 시간은 가장 마지막 공격 시간까지 고려
-        int totalTime = attacks[attacks.length - 1][0];
-
-        for (int i = 1; i <= totalTime; i++) {
-            // 현재 시간이 공격 시간인지 확인
-            if (attackIndex < attacks.length && attacks[attackIndex][0] == i) {
-                // 공격을 받으면 기술이 취소되고 피해를 입음
-                con = 0;
-                now -= attacks[attackIndex][1];
-                attackIndex++;
-            } else {
-                // 공격이 없으면 체력을 회복
-                con++;
+        //t = 연속 성공 시간, x = 1초당 회복량, y = 연속 성공 시 추가 회복량
+        //health = 초기 상태 체력
+        //attacks = [공격 시간, 피해량] 2차원 배열
+        int t = bandage[0], x = bandage[1], y = bandage[2];
+        int now = health;   //now = 초기 상태, health = 최대 체력
+        int success = 0;    //연속 성공 횟수
+        int attack = 0;     //공격할 인덱스인지 확인(2차원 배열 순차 접근)
+        
+        for(int i=1; i<=attacks[attacks.length-1][0]; i++){
+            //공격할 인덱스인지 확인, 맞으면 연속 성공 초기화
+            if(i==attacks[attack][0]){
+                now -= attacks[attack][1];
+                success = 0;
+                attack++;
+            }else{
                 now += x;
-                // 연속 성공 시간 도달 시 추가 회복
-                if (con == t) {
+                success++;
+                if(success==t){ //연속 성공 시 추가 회복량
                     now += y;
-                    con = 0; // 연속 성공 시간 초기화
+                    success = 0;
                 }
             }
-
-            // 체력이 최대 체력을 초과하지 않도록 함
-            if (now > health) {
+            if(now > health){   //최대 체력 초과인 경우
                 now = health;
             }
-
-            // 체력이 0 이하가 되면 캐릭터가 죽음
-            if (now <= 0) {
+            if(now <= 0){       //현재 체력이 0 이하인 경우
                 return -1;
             }
         }
-
         return now;
     }
 }
