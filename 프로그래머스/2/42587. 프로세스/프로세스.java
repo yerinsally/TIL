@@ -21,7 +21,7 @@ class Solution {
         while(!q.isEmpty()){
             int index = q.poll();   //현재 프로세스의 인덱스
             if(priorities[index] < pq.peek()){ //현재 프로세스보다 높은 우선순위 존재
-                q.offer(index);
+                q.add(index);
             }else{
                 answer++;   //실행 순서 증가
                 pq.poll();  //실행된 프로세스 우선순위 제거
