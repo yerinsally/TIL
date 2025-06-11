@@ -1,0 +1,12 @@
+-- PRODUCT의 모든 제품을 구매한 고객
+-- 한 고객이 동일한 제품을 N번 구매할 수 있음!
+-- 모든 고객이 구매한 서로 다른 제품 수 = PRODUCT의 제품 개수
+WITH C AS(
+    SELECT CUSTOMER_ID, COUNT(DISTINCT PRODUCT_KEY) AS CNT
+    FROM CUSTOMER
+    GROUP BY CUSTOMER_ID
+),
+P AS (SELECT COUNT(*) AS TOTAL FROM PRODUCT)
+SELECT C.CUSTOMER_ID
+FROM C, P
+WHERE C.CNT = P.TOTAL
