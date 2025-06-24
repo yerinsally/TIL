@@ -1,13 +1,12 @@
+import java.util.*;
 class Solution {
     public int[] solution(int n) {
-        int[] answer = new int[n%2 + n/2];
-        int index = 0;
-        for (int i=1; i<=n; i++) {
-            if (i % 2 != 0) {
-                answer[index] = i;
-                index++;
+        ArrayList<Integer> list = new ArrayList<>();
+        for(int i=1; i<=n; i++){
+            if(i%2!=0){
+                list.add(i);
             }
         }
-        return answer;
+        return list.stream().mapToInt(i->i).toArray();
     }
 }
