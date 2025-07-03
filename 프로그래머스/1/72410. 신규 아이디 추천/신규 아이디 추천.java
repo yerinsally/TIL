@@ -11,15 +11,18 @@ class Solution {
                 sb.append(c);
             }
         }
-        // 3단계: 마침표 연속 제거
+        //3단계: 마침표 연속 제거
+        //괄호를 통해 [특수문자] 인식, {n,} = 최소 n번 이상 반복
         String answer = sb.toString().replaceAll("[.]{2,}", ".");
-        // 4단계: 처음이나 끝의 마침표 제거
+        //4단계: 처음이나 끝의 마침표 제거
+        //괄호를 통해 [특수문자] 인식, ^(시작), $(끝)
         answer = answer.replaceAll("^[.]|[.]$", "");
         //5단계
         if(answer.equals("")){
             answer = "a";
         }
         //6단계
+        //마지막 문자 = str.charAt(str.length()-1)
         if(answer.length() >= 16){
             answer = answer.substring(0,15);
             char c = answer.charAt(answer.length()-1);
