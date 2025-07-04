@@ -18,9 +18,6 @@ class Solution {
                 }
             }
         }
-        if(top == Integer.MAX_VALUE){
-                return new int[]{0,0,0,0};
-        }
         answer[0] = top;
         answer[1] = left;
         answer[2] = bottom+1;
